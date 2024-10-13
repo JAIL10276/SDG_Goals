@@ -1,0 +1,19 @@
+{
+  "name": "sdg_goals",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JAIL10276/SDG-Goals.git"
+  },
+  "author": "JAIL",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JAIL10276/SDG-Goals/issues"
+  },
+  "homepage": "https://github.com/JAIL10276/SDG-Goals#readme",
+  "description": ""
+}

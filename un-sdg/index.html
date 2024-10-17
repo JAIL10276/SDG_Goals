@@ -49,8 +49,11 @@
   </div>
   <!-- Default usage -->
   <h2>SDG logo</h2>
-  <unSvg id="sdg-element" loading = "lazy" fetchpriority="low">Svg goes here.</unSvg>
-
+  <un-svg id="sdg-element" loading = "lazy" fetchpriority="low">Svg goes here.</un-svg>
+  <!-- debug -->
+  <script>
+    debugger;
+  </script>
   <!-- Toggle functionality -->
   <div class="toggle-container">
     <input type="checkbox" id="toggle" class="toggle-input" />
@@ -60,6 +63,7 @@
 <script type="module" src="./un-sdg.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    debugger
     const allButton = document.getElementById("allButton");
     const randomButton = document.getElementById("randomButton");
     const logoButton = document.getElementById("logoButton");

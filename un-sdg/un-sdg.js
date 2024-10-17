@@ -30,6 +30,7 @@ export class unSvg extends DDDSuper(I18NMixin(LitElement)) {
     this.isImageVisible = true;
     // 'all'= 18 | 'circle' = 0 *Default
     this.goalNum = 0;
+    debugger
   }
 
   // Lit reactive properties
@@ -53,6 +54,7 @@ export class unSvg extends DDDSuper(I18NMixin(LitElement)) {
    * This updates the lit elements.
    */
   updated(button_id) {
+    debugger;
     console.log(`Button ID: ${button_id}`); // Log the button ID
     // random goal
     if (button_id === -1) {
@@ -76,6 +78,7 @@ export class unSvg extends DDDSuper(I18NMixin(LitElement)) {
       this.imgPath = this.setImageUrl(this.goal);
       this.label = this.getLabel(button_id);
       console.log(`Circle Goal: ${this.goalNum}, Image Path: ${this.imgPath}, Label: ${this.label}`);
+      debugger;
     }
   }
 
@@ -86,6 +89,7 @@ export class unSvg extends DDDSuper(I18NMixin(LitElement)) {
    * @returns Goal label.
    */
   getLabel(goal_index){
+    debugger
     if (goal_index===0){
       return "Un Sustainable Goals Logo";
     }
@@ -112,6 +116,7 @@ export class unSvg extends DDDSuper(I18NMixin(LitElement)) {
       "Peace, Justice, and Strong Institutions",
       "Partnerships for the Goals"
     ];
+    debugger;
     return sdgLabelLst[goal_index-1];
     }
   }
@@ -124,8 +129,10 @@ export class unSvg extends DDDSuper(I18NMixin(LitElement)) {
     const minCeiled = Math.ceil(1);
     const maxFloored = Math.floor(17);
     return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+    debugger;
   }
   setImageVisibility(boolean){
+    debugger;
     boolean ?
     (this.colorOnly = false, this.isImageVisible = true)
     :
@@ -275,6 +282,7 @@ export class unSvg extends DDDSuper(I18NMixin(LitElement)) {
   // Lit render the HTML
   render() {
     console.log(`Rendering with Image Path: ${this.imgPath}, Label: ${this.getLabel(this.goalNum)}`);
+    debugger;
     return html`
       ${this.colorOnly ?
         html`
@@ -282,13 +290,13 @@ export class unSvg extends DDDSuper(I18NMixin(LitElement)) {
         `
         : this.isImageVisible ? html`
             <div class="svg-wrapper" style="--width: ${this.width}px; --goal-color: var(--un-sdg-c${this.goal})">
-              <img src=${this.imgPath} alt=${this.getLabel(this.goalNum)} loading="lazy" fetchpriority="low" width=${this.width}>
+              <img src=${this.imgPath} alt=${this.getLabel(this.goalNum)} loading="lazy" fetchPriority="low" width=${this.width}>
             </div>
           `
           :
           html`
             <div class="svg-wrapper" style="--width: ${this.width}px; --goal-color: var(--un-sdg-c${this.goal})">
-              <img src='' alt="" loading="lazy" fetchpriority="low" width=${this.width}>
+              <img src='' alt="" loading="lazy" fetchPriority="low" width=${this.width}>
             </div>
           `
       }`;

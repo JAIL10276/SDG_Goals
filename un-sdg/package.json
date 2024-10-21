@@ -1,6 +1,6 @@
 {
     "name": "@psu.edu/un-sdg",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "description": "Webcomponent un-sdg following hax / open-wc recommendations",
     "license": "Apache-2.0",
     "author": {

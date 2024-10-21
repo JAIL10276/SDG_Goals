@@ -19,6 +19,7 @@ export class unSdg extends DDDSuper(LitElement) {
     this.colorOnly = false; // Whether to display colors only
     this.showAllGoals = false; // Whether to show all goals
     this.showRandomGoal = false; // Whether to show a random goal
+    this.showLogo = true; // Whether to show the logo (default)
   }
 
   // Define reactive properties that trigger updates when changed
@@ -27,12 +28,13 @@ export class unSdg extends DDDSuper(LitElement) {
       goal: { type: String, reflect: true },
       width: { type: String },
       height: { type: String },
-      label: { type: String },
+      label: { type: String , reflect: true},
       loading: { type: String, reflect: true },
       fetchPriority: { type: String, reflect: true },
       colorOnly: { type: Boolean, reflect: true },
       showAllGoals: { type: Boolean, reflect: true },
       showRandomGoal: { type: Boolean, reflect: true },
+      showLogo: {type: Boolean, reflect:true },
     };
   }
 
@@ -57,10 +59,12 @@ export class unSdg extends DDDSuper(LitElement) {
         --un-sdg-goal-15: rgb(63, 175, 73);
         --un-sdg-goal-16: rgb(1, 85, 138);
         --un-sdg-goal-17: rgb(25, 54, 103);
-        display: block;
         width: var(--width, 254px);
         height: var(--height, 254px);
         text-align: center;
+        gap: 5px; /* Arrange children in a row */
+        justify-content: space-evenly; /* Distribute elements with equal space between and around them */
+        align-items: center; /* Center elements vertically */
         padding: 10px;
         color: white;
         font-family: Arial, sans-serif;
@@ -71,10 +75,14 @@ export class unSdg extends DDDSuper(LitElement) {
         padding: 0;
         margin: 0;
       }
+
+
+
       img {
         width: 100%;
         height: 100%;
       }
+
     `;
   }
 
@@ -93,7 +101,7 @@ export class unSdg extends DDDSuper(LitElement) {
         this.label = "Sustainable developments logo";
         break;
       case "all":
-        this.label = "All SDG goals displayed";
+        this.label = "Sustainable Development Goals";
         break;
       case "1":
         this.label = "Goal 1: No poverty";
@@ -159,6 +167,7 @@ export class unSdg extends DDDSuper(LitElement) {
   toggleShowAllGoals() {
     this.showAllGoals = true;
     this.showRandomGoal = false;
+    this.showLogo = false;
     this.requestUpdate(); // Request a re-render
   }
 
@@ -166,6 +175,7 @@ export class unSdg extends DDDSuper(LitElement) {
   toggleShowRandomGoal() {
     this.showAllGoals = false;
     this.showRandomGoal = true;
+    this.showLogo = false;
     this.requestUpdate();
   }
 
@@ -174,41 +184,64 @@ export class unSdg extends DDDSuper(LitElement) {
     this.colorOnly = !this.colorOnly;
     this.requestUpdate();
   }
-
+  // Toggle Logo
+  toggleLogo(){
+    this.showLogo = true;
+    this.colorOnly = false;
+    this.showAllGoals = false;
+    this.showRandomGoal = false;
+    this.requestUpdate();
+  }
+  generateRandomGoal(){
+    return Math.floor(Math.random() * 17) + 1; // Generate random goal
+  }
   // Render the appropriate content based on the active mode
   render() {
     if (this.showAllGoals) {
-      return html`<div class="svg-wrapper">${this.renderGoals(this.colorOnly)}</div>`;
-    } else if (this.showRandomGoal) {
-      const randomGoal = Math.floor(Math.random() * 17) + 1; // Generate random goal
       return html`
-        <div class="svg-wrapper" style="background-color: var(--un-sdg-goal-${randomGoal});">
+        <div class="text">
+        <h1>${this.colorOnly ? this.label + " (Color Only)" : this.label}</h1>
+        </div>
+        <div class="svg-wrapper">${this.renderGoals(this.colorOnly)}</div>`;
+    } else if (this.showRandomGoal) {
+      return html`
+        <div class="svg-wrapper" style="background-color: var(--un-sdg-goal-${this.goal});">
           ${this.colorOnly
         ? ""
-        : html`<img src="./lib/svgs/un-sdg_${randomGoal}.svg" alt="${this.label}" />`}
+        : html`<img src="./lib/svgs/un-sdg_${this.goal}.svg" alt="${this.label}" />`}
         </div>
       `;
     } else {
       return html`
         <div class="svg-wrapper" style="background-color: var(--un-sdg-goal-${this.goal});">
           ${this.colorOnly
-            ? ""
-            : html`<img src="./lib/svgs/un-sdg_${this.goal}.svg" alt="${this.label}"/>`}
+        ? ""
+        : html`<img src="./lib/svgs/un-sdg_${this.goal}.svg" alt="${this.label}"/>`}
         </div>
       `;
     }
   }
 
   // Render all goals as separate components
-  renderGoals(colorOnly) {
+  renderGoals() {
     const goals = Array.from({ length: 17 }, (_, i) => i + 1); // Create array [1, 2, ..., 17]
-    return goals.map(
+    return html`
+    <div class="goals">
+      ${goals.map(
       (goal) => html`
-        <un-sdg goal="${goal}" ?colorOnly="${colorOnly}"></un-sdg>
-      `
-    );
-    debugger
+          <un-sdg
+            goal="${goal}"
+            ?colorOnly="${this.colorOnly}">
+          </un-sdg>
+        `
+    )}
+    </div>
+  `;
   }
+
+
+
+
 
   /**
    * haxProperties integration via file reference

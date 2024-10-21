@@ -8,13 +8,17 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`un-sdg`",
+          "description": "",
           "name": "unSdg",
           "members": [
             {
               "kind": "field",
               "name": "tag",
               "static": true
+            },
+            {
+              "kind": "method",
+              "name": "updateAlt"
             },
             {
               "kind": "field",
@@ -24,54 +28,118 @@
             },
             {
               "kind": "field",
-              "name": "title",
+              "name": "goal",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"circle\"",
+              "privacy": "public",
+              "attribute": "goal",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "width",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"254px\"",
+              "privacy": "public",
+              "attribute": "width"
+            },
+            {
+              "kind": "field",
+              "name": "height",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"254px\"",
+              "privacy": "public",
+              "attribute": "height"
+            },
+            {
+              "kind": "field",
+              "name": "label",
               "type": {
                 "text": "string"
               },
               "default": "\"\"",
               "privacy": "public",
-              "attribute": "title"
+              "attribute": "label"
             },
             {
               "kind": "field",
-              "name": "t",
+              "name": "loading",
               "type": {
-                "text": "object"
+                "text": "string"
               },
-              "default": "{\n      ...this.t,\n      title: \"Title\",\n    }"
+              "default": "\"lazy\"",
+              "privacy": "public",
+              "attribute": "loading",
+              "reflects": true
             },
             {
               "kind": "field",
-              "name": "",
+              "name": "fetchPriority",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"low\"",
               "privacy": "public",
-              "attribute": ""
+              "attribute": "fetchPriority",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "colorOnly",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "privacy": "public",
+              "attribute": "colorOnly"
             }
           ],
           "attributes": [
             {
-              "name": "",
-              "fieldName": ""
+              "name": "goal",
+              "fieldName": "goal"
             },
             {
-              "name": "title",
-              "fieldName": "title"
+              "name": "width",
+              "fieldName": "width"
+            },
+            {
+              "name": "height",
+              "fieldName": "height"
+            },
+            {
+              "name": "label",
+              "fieldName": "label"
+            },
+            {
+              "name": "loading",
+              "fieldName": "loading"
+            },
+            {
+              "name": "fetchPriority",
+              "fieldName": "fetchPriority"
+            },
+            {
+              "name": "colorOnly",
+              "fieldName": "colorOnly"
             }
           ],
           "mixins": [
             {
               "name": "DDDSuper",
               "package": "@haxtheweb/d-d-d/d-d-d.js"
-            },
-            {
-              "name": "I18NMixin",
-              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "un-sdg",
           "customElement": true
         }
       ],

@@ -171,7 +171,7 @@ export class unSdg extends DDDSuper(LitElement) {
 
   // Toggle color-only mode
   toggleColorOnly() {
-    this.colorOnly = true;
+    this.colorOnly = !this.colorOnly;
     this.requestUpdate();
   }
 

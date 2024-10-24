@@ -21,6 +21,30 @@
               "name": "updateAlt"
             },
             {
+              "kind": "method",
+              "name": "toggleShowAllGoals"
+            },
+            {
+              "kind": "method",
+              "name": "toggleShowRandomGoal"
+            },
+            {
+              "kind": "method",
+              "name": "toggleColorOnly"
+            },
+            {
+              "kind": "method",
+              "name": "toggleLogo"
+            },
+            {
+              "kind": "method",
+              "name": "generateRandomGoal"
+            },
+            {
+              "kind": "method",
+              "name": "renderGoals"
+            },
+            {
               "kind": "field",
               "name": "haxProperties",
               "static": true,
@@ -65,7 +89,8 @@
               },
               "default": "\"\"",
               "privacy": "public",
-              "attribute": "label"
+              "attribute": "label",
+              "reflects": true
             },
             {
               "kind": "field",
@@ -97,7 +122,41 @@
               },
               "default": "false",
               "privacy": "public",
-              "attribute": "colorOnly"
+              "attribute": "colorOnly",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "showAllGoals",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "privacy": "public",
+              "attribute": "showAllGoals",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "showRandomGoal",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "privacy": "public",
+              "attribute": "showRandomGoal",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "showLogo",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "privacy": "public",
+              "attribute": "showLogo",
+              "reflects": true
             }
           ],
           "attributes": [
@@ -128,6 +187,18 @@
             {
               "name": "colorOnly",
               "fieldName": "colorOnly"
+            },
+            {
+              "name": "showAllGoals",
+              "fieldName": "showAllGoals"
+            },
+            {
+              "name": "showRandomGoal",
+              "fieldName": "showRandomGoal"
+            },
+            {
+              "name": "showLogo",
+              "fieldName": "showLogo"
             }
           ],
           "mixins": [
